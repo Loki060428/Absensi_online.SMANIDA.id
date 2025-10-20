@@ -447,7 +447,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const getTodayDateString = () => new Date().toISOString().split('T')[0];
     const showModal = (modal) => modal.classList.remove('hidden');
     const hideModal = (modal) => modal.classList.add('hidden');
-    const getStatusColor = (status) => { ({ Hadir: 'text-green-600 bg-green-100', Izin: 'text-yellow-600 bg-yellow-100', Sakit: 'text-blue-600 bg-blue-100', Telat: 'text-orange-600 bg-orange-100', Alpa: 'text-red-600 bg-red-100' })[status] || 'text-gray-600 bg-gray-100'; };
+    const getStatusColor = (status) => ({ Hadir: 'text-green-600 bg-green-100', Izin: 'text-yellow-600 bg-yellow-100', Sakit: 'text-blue-600 bg-blue-100', Telat: 'text-orange-600 bg-orange-100', Alpa: 'text-red-600 bg-red-100' })[status] || 'text-gray-600 bg-gray-100';
     
     // ===== INITIALIZATION & APP LOGIC =====
     async function initializeApp() {
@@ -852,7 +852,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ui.cancelCameraBtn.addEventListener('click', stopCamera);
     ui.closeViewPhotoBtn.addEventListener('click', () => hideModal(ui.viewPhotoModal));
     ui.adminLoginLink.addEventListener('click', (e) => { e.preventDefault(); ui.adminPasswordInput.value = ''; ui.adminPasswordError.classList.add('hidden'); showModal(ui.adminPasswordModal); ui.adminPasswordInput.focus(); });
-    ui.adminPasswordForm.addEventListener('submit', (e) => { e.preventDefault(); if (ui.adminPasswordInput.value === 'admin123') { sessionStorage.setItem('isAdminLoggedIn', 'true'); hideModal(ui.adminPasswordModal); initializeAdminPage(); } else { ui.adminPasswordError.classList.remove('hidden'); } });
+    ui.adminPasswordForm.addEventListener('submit', (e) => { e.preventDefault(); if (ui.adminPasswordInput.value === '12345') { sessionStorage.setItem('isAdminLoggedIn', 'true'); hideModal(ui.adminPasswordModal); initializeAdminPage(); } else { ui.adminPasswordError.classList.remove('hidden'); } });
     document.body.addEventListener('click', (e) => { const btn = e.target.closest('.view-photo-btn'); if (btn) { ui.photoViewer.src = btn.dataset.photo; ui.photoInfo.textContent = btn.dataset.info; showModal(ui.viewPhotoModal); } });
     
     // ===== APP START =====
